@@ -6,25 +6,26 @@ import Adapter from "enzyme-adapter-react-16";
 
 configure({ adapter: new Adapter() });
 
-test("WaldoImage: Waldo image contains a link", () => {
-  const wrapper = mount(<WaldoImage />);
-  expect(wrapper.prop("src")).not.toEqual("");
-  wrapper.unmount();
-});
-
-test("WaldoImage: GetImage sets the state correctly", async () => {
-  const wrapper = mount(<WaldoImage />);
-  await wrapper.instance().getImage(0);
-  expect(wrapper.state("link")).toEqual(
-    "https://i.pinimg.com/originals/16/dc/04/16dc04bd415ac204e6f774a0b1814590.jpg"
-  );
-  wrapper.unmount();
-});
-
-test("WaldoImage: GetImage doesn't change state if the params are wrong", async () => {
-  const wrapper = mount(<WaldoImage />);
+test("WaldoImage: GetData doesn't change state if the params are wrong", async () => {
+  const wrapper = shallow(<WaldoImage />);
   wrapper.setState({ link: "testing" });
-  await wrapper.instance().getImage("string");
+  await wrapper.instance().getData("string");
   expect(wrapper.state("link")).toEqual("testing");
+});
+
+test("WaldoImage: Clicking on waldo changes state to found", () => {
+  const wrapper = mount(<WaldoImage img="0" />);
+  wrapper.setState({ found: false });
+  wrapper.find("#target").simulate("click");
+  expect(wrapper.state("found")).toBe(true);
   wrapper.unmount();
+});
+
+test("WaldoImage: GetData sets the state correctly", async () => {
+  const wrapper = shallow(<WaldoImage />);
+  await wrapper.instance().getData(0);
+  expect(wrapper.state("link")).toEqual(
+    "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg"
+  );
+  expect(wrapper.state("coords")).toEqual({ x: 1267, y: 86 });
 });
