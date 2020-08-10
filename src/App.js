@@ -1,3 +1,4 @@
+import "./css/reset.css";
 import React from "react";
 import WaldoImage from "./components/WaldoImage";
 
