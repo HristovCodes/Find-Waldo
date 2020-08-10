@@ -1,21 +1,12 @@
 import React from "react";
 import App from "../App";
-import { render } from "@testing-library/react";
+import { shallow, mount, render } from "enzyme";
+import { configure } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
 
-test("App: Renders Waldo image", () => {
-  const { getByAltText } = render(<App />);
-  const imgElement = getByAltText(/waldo/i);
-  expect(imgElement).toBeInTheDocument();
-});
+configure({ adapter: new Adapter() });
 
-test("App: Waldo image contains a link", () => {
-  const { getByAltText } = render(<App />);
-  const imgElement = getByAltText(/waldo/i);
-  const imgSrc = imgElement.getAttribute("src");
-  expect(imgSrc).not.toBe("");
-});
-
-it("Firebase: Image is pulled from DB", async () => {
-  expect.assertions(1);
-  await expect(App.getImage(0).resolves.toBeTruthy());
+test("App: Renders WaldoImage", () => {
+  const wrapper = shallow(<App />);
+  expect(wrapper.contains(wrapper.getElement(".waldoimage"))).toEqual(true);
 });
