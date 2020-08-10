@@ -5,22 +5,23 @@ export default class WaldoImage extends React.Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    this.getImage = this.getImage.bind(this);
+    this.getData = this.getData.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
-      link: "",
+      link:
+        "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg",
+      coords: { x: 1267, y: 86 },
+      found: false,
     };
   }
 
-  async getImage(num) {
-    //returns a link of an image from the db
-
-    //if anything but an integer is passed return an empty string
-    //as to not make unecessary calls to the api
+  async getData(num) {
+    //sets the link to the image
+    //sets the coords of waldo
     if (isNaN(num)) return false;
 
-    //get the img link from the database
-    const img = await Firebase.db
-      .ref("imgs/links/" + num)
+    const data = await Firebase.db
+      .ref("imgs/")
       .once("value")
       .then((snapshot) => {
         return snapshot.val() === null ? {} : snapshot.val();
@@ -29,9 +30,19 @@ export default class WaldoImage extends React.Component {
         console.log(err);
         return "";
       });
+    //if all goes according to plan update the state
+    this._isMounted &&
+      this.setState({
+        link: data.links[num] ? data.links[num] : data.links[0],
+      });
+    this._isMounted &&
+      this.setState({
+        coords: data.coords[num] ? data.coords[num] : data.coords[0],
+      });
+  }
 
-    //if all goes according to plan update the state and return true
-    this._isMounted && this.setState({ link: img });
+  handleClick() {
+    this.setState({ found: true });
   }
 
   componentWillUnmount() {
@@ -40,10 +51,26 @@ export default class WaldoImage extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this._isMounted && this.getImage(this.props.img);
+    this._isMounted && this.getData(this.props.img);
   }
 
   render() {
-    return <img className="waldoimage" src={this.state.link} alt="waldo"></img>;
+    const calcStyle = {
+      position: "absolute",
+      top: this.state.coords.y,
+      left: this.state.coords.x,
+      width: "20px",
+      height: "20px",
+    };
+    return (
+      <div className="waldoimage">
+        <img id="image" src={this.state.link} alt="waldo"></img>
+        <button
+          style={calcStyle}
+          onClick={this.handleClick}
+          id="target"
+        ></button>
+      </div>
+    );
   }
 }
