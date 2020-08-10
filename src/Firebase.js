@@ -16,12 +16,17 @@ const db = firebase.database();
 
 /* Upload image links to db
 db.ref("imgs/").update({
-    links: [
-      "https://i.pinimg.com/originals/16/dc/04/16dc04bd415ac204e6f774a0b1814590.jpg",
-      "https://i.pinimg.com/originals/ca/13/77/ca137724b13467ac80f2c657d8782031.jpg",
-      "https://i.pinimg.com/originals/df/7c/42/df7c42f19c6ff4b97b679ffabfba5ebe.jpg",
-    ],
-  });
+  links: [
+    "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg",
+    "https://2.bp.blogspot.com/-8hB73_LeEe0/UgFyI3AYF4I/AAAAAAAABKs/JdJbzC8sEXY/s1600/1115977_10151854003328060_363126350_o.jpg",
+    "https://cdn.thearthunters.com/wp-content/uploads/2012/10/190.jpg",
+  ],
+  coords: [
+    { x: 1267, y: 86 },
+    { x: 782, y: 887 },
+    { x: 1400, y: 469 },
+  ],
+});
 */
 
 export default { db: firebase.database(), app: firebase.app() };
