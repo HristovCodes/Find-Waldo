@@ -16,11 +16,12 @@ export default class App extends React.Component {
       start: 0,
       time: Number.MAX_SAFE_INTEGER,
       username: "",
+      choise: 0,
     };
   }
 
-  startGame() {
-    this.setState({ game: true, start: Date.now() });
+  startGame(num) {
+    this.setState({ game: true, start: Date.now(), choice: num });
   }
 
   handleClick() {
@@ -38,11 +39,38 @@ export default class App extends React.Component {
   render() {
     return this.state.game === true ? (
       <div className="App">
-        <WaldoImage img="0" handleClick={this.handleClick}></WaldoImage>
+        <WaldoImage
+          img={this.state.choice}
+          handleClick={this.handleClick}
+        ></WaldoImage>
       </div>
     ) : (
       <div className="App">
-        <button onClick={this.startGame}>START</button>
+        <label htmlFor="dif">Choose difficulty </label>
+        <button
+          name="dif"
+          onClick={() => {
+            this.startGame(0);
+          }}
+        >
+          Easy
+        </button>
+        <button
+          name="dif"
+          onClick={() => {
+            this.startGame(1);
+          }}
+        >
+          Medium
+        </button>
+        <button
+          name="dif"
+          onClick={() => {
+            this.startGame(2);
+          }}
+        >
+          Hard
+        </button>
         <label htmlFor="name">Username: </label>
         <input type="text" onChange={this.handleChange} name="name"></input>
         <Highscores user={this.state.username}></Highscores>
