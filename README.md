@@ -1,5 +1,5 @@
 ## What is this app all about?
-The app aims to imitate the popular British game "Where's Waldo" in a fun and challenging way.
+The app aims to imitate the popular British game "Where's Waldo" in a fun and challenging way. Your goal is to find a certain character (e.g Waldo) in a big image with many more characters.
 
 ## What's the game "Where's Waldo" all about?
 Where's Waldo is a British series of children's puzzle books created by English illustrator Martin Handford. The books consist of a series of detailed double-page spread illustrations depicting dozens or more people doing a variety of amusing things at a given location. Readers are challenged to find a character named Waldo hidden in the group.
