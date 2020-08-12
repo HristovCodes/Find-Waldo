@@ -14,19 +14,25 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-/* Upload image links to db
-db.ref("imgs/").update({
-  links: [
-    "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg",
-    "https://2.bp.blogspot.com/-8hB73_LeEe0/UgFyI3AYF4I/AAAAAAAABKs/JdJbzC8sEXY/s1600/1115977_10151854003328060_363126350_o.jpg",
-    "https://cdn.thearthunters.com/wp-content/uploads/2012/10/190.jpg",
-  ],
-  coords: [
-    { x: 1267, y: 86 },
-    { x: 782, y: 887 },
-    { x: 1400, y: 469 },
-  ],
-});
-*/
+const updateHighScore = (num, id) => {
+  if (!isNaN(num)) {
+    id = id === "" ? "Jhon" : id;
+    db.ref("highscore/" + id).update(
+      {
+        highscore: num,
+        name: id,
+      },
+      function (error) {
+        if (error) {
+          console.log(error + "\nhere");
+        }
+      }
+    );
+  }
+};
 
-export default { db: firebase.database(), app: firebase.app() };
+export default {
+  updateHighScore,
+  db: firebase.database(),
+  app: firebase.app(),
+};
