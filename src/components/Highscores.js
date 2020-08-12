@@ -39,6 +39,12 @@ export default class Highscores extends React.Component {
     return this.state.data
       .sort((a, b) => a.highscore - b.highscore)
       .map((user) => {
+        if (user.name === this.props.user)
+          return (
+            <p key={user.name + user.highscore}>
+              {user.name}: {user.highscore} (you)
+            </p>
+          );
         return (
           <p key={user.name + user.highscore}>
             {user.name}: {user.highscore}

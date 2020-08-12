@@ -45,7 +45,7 @@ export default class App extends React.Component {
         <button onClick={this.startGame}>START</button>
         <label htmlFor="name">Username: </label>
         <input type="text" onChange={this.handleChange} name="name"></input>
-        <Highscores></Highscores>
+        <Highscores user={this.state.username}></Highscores>
       </div>
     );
   }
