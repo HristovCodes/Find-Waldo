@@ -10,6 +10,7 @@ Waldo is identified by his red-and-white-striped shirt, bobble hat, and glasses,
 - Different difficulty levels
 - Username identification
 - Leaderboard with best times achieved by different users updated in real time
+- Score system based on time it took to find Waldo
 
 ## About the Backend
 The backend uses the so called BAAS. My choice for the backend was [Firebase](https://firebase.google.com/) due to it's simplicity, scalability and ease of use.
