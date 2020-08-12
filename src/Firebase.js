@@ -48,8 +48,26 @@ const getData = async (num) => {
   return data;
 };
 
+// not tested needs to be mocked because data is
+// always different and bigger every time
+const getHighScore = async () => {
+  let dataHS = await db
+    .ref("highscore/")
+    .once("value")
+    .then((snapshot) => {
+      return snapshot.val() === null ? {} : snapshot.val();
+    })
+    .catch((err) => {
+      console.log(err);
+      return "";
+    });
+  dataHS = Object.values(dataHS);
+  return dataHS;
+};
+
 export default {
   getData,
+  getHighScore,
   updateHighScore,
   db: firebase.database(),
   app: firebase.app(),
