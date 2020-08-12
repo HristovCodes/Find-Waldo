@@ -46,33 +46,37 @@ export default class App extends React.Component {
       </div>
     ) : (
       <div className="App">
-        <label htmlFor="dif">Choose difficulty </label>
-        <button
-          name="dif"
-          onClick={() => {
-            this.startGame(0);
-          }}
-        >
-          Easy
-        </button>
-        <button
-          name="dif"
-          onClick={() => {
-            this.startGame(1);
-          }}
-        >
-          Medium
-        </button>
-        <button
-          name="dif"
-          onClick={() => {
-            this.startGame(2);
-          }}
-        >
-          Hard
-        </button>
-        <label htmlFor="name">Username: </label>
-        <input type="text" onChange={this.handleChange} name="name"></input>
+        <div>
+          <label htmlFor="dif">Choose difficulty </label>
+          <button
+            name="dif"
+            onClick={() => {
+              this.startGame(0);
+            }}
+          >
+            Easy
+          </button>
+          <button
+            name="dif"
+            onClick={() => {
+              this.startGame(1);
+            }}
+          >
+            Medium
+          </button>
+          <button
+            name="dif"
+            onClick={() => {
+              this.startGame(2);
+            }}
+          >
+            Hard
+          </button>
+        </div>
+        <div>
+          <label htmlFor="name">Username: </label>
+          <input type="text" onChange={this.handleChange} name="name"></input>
+        </div>
         <Highscores user={this.state.username}></Highscores>
       </div>
     );
