@@ -10,6 +10,7 @@ const firebaseConfig = {
   messagingSenderId: "757702852384",
   appId: "1:757702852384:web:4b77e37832f1b9ab852145",
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
@@ -31,7 +32,24 @@ const updateHighScore = (num, id) => {
   }
 };
 
+const getData = async (num) => {
+  if (isNaN(num)) return false;
+
+  const data = await db
+    .ref("imgs/")
+    .once("value")
+    .then((snapshot) => {
+      return snapshot.val() === null ? {} : snapshot.val();
+    })
+    .catch((err) => {
+      console.log(err);
+      return "";
+    });
+  return data;
+};
+
 export default {
+  getData,
   updateHighScore,
   db: firebase.database(),
   app: firebase.app(),

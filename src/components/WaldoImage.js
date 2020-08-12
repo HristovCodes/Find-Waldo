@@ -22,27 +22,21 @@ export default class WaldoImage extends React.Component {
     this._isMounted && this.getData(this.props.img);
   }
 
-  async getData(num) {
-    //sets the link to the image
-    //sets the coords of waldo
-    if (isNaN(num)) return false;
-
-    const data = await Firebase.db
-      .ref("imgs/")
-      .once("value")
-      .then((snapshot) => {
-        return snapshot.val() === null ? {} : snapshot.val();
-      })
-      .catch((err) => {
-        console.log(err);
-        return "";
-      });
+  getData(num) {
+    const data = Firebase.getData(num);
     //if all goes according to plan update the state
-    this._isMounted &&
-      this.setState({
-        link: data.links[num] ? data.links[num] : data.links[0],
-        coords: data.coords[num] ? data.coords[num] : data.coords[0],
-      });
+    data
+      .then(
+        (res) => {
+          this._isMounted &&
+            this.setState({
+              link: res.links[num] ? res.links[num] : res.links[0],
+              coords: res.coords[num] ? res.coords[num] : res.coords[0],
+            });
+        },
+        (e) => {}
+      )
+      .catch((e) => {});
   }
 
   render() {

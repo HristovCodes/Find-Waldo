@@ -22,3 +22,33 @@ test("Firebase: UpdateHighScore updates the score of the user", async () => {
     });
   expect(data.highscore).toEqual(hs);
 });
+
+test("Firebase: GetData pulls correct data", async () => {
+  const data = await Firebase.getData(0);
+  expect(data).toEqual({
+    coords: [
+      {
+        x: 1267,
+        y: 86,
+      },
+      {
+        x: 782,
+        y: 887,
+      },
+      {
+        x: 1400,
+        y: 469,
+      },
+    ],
+    links: [
+      "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg",
+      "https://2.bp.blogspot.com/-8hB73_LeEe0/UgFyI3AYF4I/AAAAAAAABKs/JdJbzC8sEXY/s1600/1115977_10151854003328060_363126350_o.jpg",
+      "https://cdn.thearthunters.com/wp-content/uploads/2012/10/190.jpg",
+    ],
+  });
+});
+
+test("Firebase: GetData doesn't pull if incorrect params", async () => {
+  const data = await Firebase.getData("invalid");
+  expect(data).toEqual(false);
+});
