@@ -4,6 +4,7 @@ import Firebase from "../Firebase";
 export default class Highscores extends React.Component {
   constructor(props) {
     super(props);
+    this.getHighScores = this.getHighScores.bind(this);
     this._isMounted = false;
     this.state = {
       data: [],
@@ -16,7 +17,7 @@ export default class Highscores extends React.Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this._isMounted && this.getHighScores(this.props.img);
+    this._isMounted && this.getHighScores();
   }
 
   getHighScores() {
@@ -34,7 +35,24 @@ export default class Highscores extends React.Component {
       .catch((e) => {});
   }
 
+  updateHS() {
+    return this.state.data
+      .sort((a, b) => a.highscore - b.highscore)
+      .map((user) => {
+        return (
+          <p key={user.name + user.highscore}>
+            {user.name}: {user.highscore}
+          </p>
+        );
+      });
+  }
+
   render() {
-    return <div></div>;
+    return (
+      <div className="Highscores">
+        <h1>Highscores</h1>
+        <div>{this.updateHS()}</div>
+      </div>
+    );
   }
 }
