@@ -1,3 +1,4 @@
+import "../css/WaldoImage.scss";
 import React from "react";
 import Firebase from "../Firebase";
 
@@ -9,7 +10,7 @@ export default class WaldoImage extends React.Component {
     this.state = {
       link:
         "https://static.techspot.com/images2/news/bigimage/2018/08/2018-08-13-image-14.jpg",
-      coords: { x: 1267, y: 86 },
+      coords: { x: 0, y: 0 },
     };
   }
 
@@ -22,6 +23,20 @@ export default class WaldoImage extends React.Component {
     this._isMounted && this.getData(this.props.img);
   }
 
+  calcCoords(num) {
+    const ratios = [
+      { x: 0.79685534591, y: 0.0876656473 },
+      { x: 0.48875, y: 0.88522954092 },
+      { x: 0.68359375, y: 0.34843982169 },
+    ];
+    const image = document.getElementById("image");
+
+    return {
+      x: image.width * ratios[num].x,
+      y: image.height * ratios[num].y,
+    };
+  }
+
   getData(num) {
     const data = Firebase.getData(num);
     //if all goes according to plan update the state
@@ -31,7 +46,7 @@ export default class WaldoImage extends React.Component {
           this._isMounted &&
             this.setState({
               link: res.links[num] ? res.links[num] : res.links[0],
-              coords: res.coords[num] ? res.coords[num] : res.coords[0],
+              coords: res.links[num] ? this.calcCoords(num) : { x: 0, y: 0 },
             });
         },
         (e) => {}
