@@ -1,0 +1,39 @@
+@import "./App.scss";
+
+.Highscores {
+  h1,
+  h2,
+  div,
+  p,
+  span {
+    font-family: $font;
+    font-size: $fontsize;
+    color: #3c8090;
+  }
+  h1 {
+    font-size: $fontsize * 1.6;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  h2 {
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  .You {
+    color: #00ff40;
+  }
+
+  .Rows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 30%;
+    .Row {
+      border-left: 2px solid #3c8090;
+      padding-left: 5px;
+    }
+    width: 100vw;
+  }
+}

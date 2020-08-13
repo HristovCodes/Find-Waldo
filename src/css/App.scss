@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap");
+
+$font: "Baloo Tamma 2", cursive;
+$fontsize: 14px;
+.App {
+  display: grid;
+  grid-template-areas:
+    "dif"
+    "input"
+    "highscore";
+  grid-template-rows: 1fr 1fr 5fr;
+  height: 100vh;
+  .Highscores {
+    align-self: flex-start;
+    justify-self: center;
+  }
+  .Difficulties,
+  .Input {
+    justify-self: center;
+  }
+  .Difficulties {
+    align-self: flex-end;
+  }
+  .Input {
+    align-self: flex-start;
+  }
+}
+
+.Difficulties,
+.Input {
+  label,
+  button,
+  input {
+    font-family: $font;
+    font-size: $fontsize;
+  }
+  width: 60%;
+}
+
+.Difficulties {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  button {
+    background-color: rgb(236, 248, 246);
+    border: 1.5px solid #5dd0ec;
+    border-radius: 10px;
+    margin: 2px 5px;
+    transition: 0.5s;
+    text-align: center;
+    padding: 2px 15px;
+    width: 120px;
+    // Stack multiple shadows, one from the left, the other from the right
+    &:hover,
+    &:focus {
+      box-shadow: inset -3.5em 0 0 0 adjust-hue(#5dd0ec, 45def),
+        inset 3.5em 0 0 0 adjust-hue(#5dd0ec, 45def);
+      border-color: adjust-hue(#5dd0ec, 45def);
+      color: #fff;
+    }
+  }
+  label {
+    flex-grow: 1;
+  }
+  label,
+  button {
+    color: #3c8090;
+    font-weight: 500;
+  }
+}
+
+.Input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  input {
+    background-color: #fff;
+    border: 1.5px solid #5dd0ec;
+    border-radius: 10px;
+    padding: 2px 15px;
+    margin: 2px 5px;
+  }
+  label {
+    flex-grow: 1;
+  }
+  label,
+  input {
+    color: #3c8090;
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 1300px) {
+  .Difficulties,
+  .Input {
+    width: 40%;
+  }
+}
