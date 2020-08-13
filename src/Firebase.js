@@ -15,10 +15,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-const updateHighScore = (num, id) => {
+const updateHighScore = (num, id, img) => {
   if (!isNaN(num)) {
     id = id === "" ? "Jhon" : id;
-    db.ref("highscore/" + id).update(
+    db.ref("highscore/" + img + "/" + id).update(
       {
         highscore: num,
         name: id,
