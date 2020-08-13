@@ -1,4 +1,5 @@
 import "./css/reset.css";
+import "./css/App.scss";
 import React from "react";
 import WaldoImage from "./components/WaldoImage";
 import Highscores from "./components/Highscores";
@@ -16,7 +17,7 @@ export default class App extends React.Component {
       start: 0,
       time: Number.MAX_SAFE_INTEGER,
       username: "",
-      choise: 0,
+      choice: 0,
     };
   }
 
@@ -27,7 +28,7 @@ export default class App extends React.Component {
   handleClick() {
     const diff = Date.now() - this.state.start;
     if (diff < this.state.time) {
-      Firebase.updateHighScore(diff, this.state.username);
+      Firebase.updateHighScore(diff, this.state.username, this.state.choice);
     }
     this.setState({ found: true, time: diff, game: false });
   }
@@ -46,7 +47,7 @@ export default class App extends React.Component {
       </div>
     ) : (
       <div className="App">
-        <div>
+        <div className="Difficulties">
           <label htmlFor="dif">Choose difficulty </label>
           <button
             name="dif"
@@ -73,7 +74,7 @@ export default class App extends React.Component {
             Hard
           </button>
         </div>
-        <div>
+        <div className="Input">
           <label htmlFor="name">Username: </label>
           <input type="text" onChange={this.handleChange} name="name"></input>
         </div>
