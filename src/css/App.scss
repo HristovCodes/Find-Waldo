@@ -31,8 +31,8 @@ $fontsize: 14px;
   label,
   button,
   input {
+    font-size: $fontsize * 0.7;
     font-family: $font;
-    font-size: $fontsize;
   }
   width: 60%;
 }
@@ -45,11 +45,11 @@ $fontsize: 14px;
     background-color: rgb(236, 248, 246);
     border: 1.5px solid #5dd0ec;
     border-radius: 10px;
-    margin: 2px 5px;
+    margin: 2px 3px;
     transition: 0.5s;
     text-align: center;
-    padding: 2px 15px;
-    width: 120px;
+    padding: 1px 8px;
+    width: 80px;
     // Stack multiple shadows, one from the left, the other from the right
     &:hover,
     &:focus {
@@ -77,7 +77,8 @@ $fontsize: 14px;
     background-color: #fff;
     border: 1.5px solid #5dd0ec;
     border-radius: 10px;
-    padding: 2px 15px;
+    padding: 1px 8px;
+    width: 120px;
     margin: 2px 5px;
   }
   label {
@@ -90,9 +91,44 @@ $fontsize: 14px;
   }
 }
 
-@media (min-width: 1300px) {
+.WaldoReference {
+  border: 1px dashed #3c8090;
+  border-radius: 25px;
+  width: 100px;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translateX(-50%);
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+  p {
+    padding: 0 10px;
+    padding-top: 15px;
+    font-family: $font;
+    color: #3c8090;
+    font-size: $fontsize * 0.7;
+  }
+}
+
+@media (min-width: 800px) {
   .Difficulties,
   .Input {
     width: 40%;
+    label,
+    button,
+    input {
+      font-size: $fontsize * 1;
+    }
+    input {
+      width: 145px;
+    }
+  }
+  .WaldoReference {
+    top: 3%;
+    left: 2%;
+    transform: translateX(0%);
   }
 }

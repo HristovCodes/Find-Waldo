@@ -78,6 +78,13 @@ export default class App extends React.Component {
           <label htmlFor="name">Username: </label>
           <input type="text" onChange={this.handleChange} name="name"></input>
         </div>
+        <div className="WaldoReference">
+          <p>This is the fella you are looking for</p>
+          <img
+            src="http://4.bp.blogspot.com/-UYmP33O3TDY/VgB466m9QDI/AAAAAAAALI8/GNuVqVoUR6A/s1600/03.png"
+            alt="Waldo Reference"
+          ></img>
+        </div>
         <Highscores user={this.state.username}></Highscores>
       </div>
     );

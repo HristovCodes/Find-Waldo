@@ -25,9 +25,9 @@ export default class WaldoImage extends React.Component {
 
   calcCoords(num) {
     const ratios = [
-      { x: 0.79685534591, y: 0.0876656473 },
-      { x: 0.48875, y: 0.88522954092 },
-      { x: 0.68359375, y: 0.34843982169 },
+      { x: 0.791, y: 0.079 },
+      { x: 0.478, y: 0.885 },
+      { x: 0.635, y: 0.343 },
     ];
     const image = document.getElementById("image");
 
