@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Find-Waldo/precache-manifest.f7afd935c711f77e6e68f2172587d12c.js"
+  "/Find-Waldo/precache-manifest.87fca68c05d72142d2a9c5fa2a105cc4.js"
 );
 
 self.addEventListener('message', (event) => {
