@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d9ec18d3f30adac278d347d1c43bc831",
+    "revision": "bb6d00eb79b222e5ab5a6421afa85b8d",
     "url": "/Find-Waldo/index.html"
   },
   {
-    "revision": "91f485254b198f9a1706",
-    "url": "/Find-Waldo/static/css/main.f5dc6493.chunk.css"
+    "revision": "f9e9157ad42a06edddb4",
+    "url": "/Find-Waldo/static/css/main.e2ef28ed.chunk.css"
   },
   {
     "revision": "8d7bb574a56f5664306c",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Find-Waldo/static/js/2.329e3af8.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "91f485254b198f9a1706",
-    "url": "/Find-Waldo/static/js/main.e2bb7a28.chunk.js"
+    "revision": "f9e9157ad42a06edddb4",
+    "url": "/Find-Waldo/static/js/main.0c570b74.chunk.js"
   },
   {
     "revision": "16d45f584adaa7d00b39",
