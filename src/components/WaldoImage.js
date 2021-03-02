@@ -18,9 +18,12 @@ export default class WaldoImage extends React.Component {
     this._isMounted = false;
   }
 
+  componentWillMount() {
+    this.getData(this.props.img);
+  }
+
   componentDidMount() {
     this._isMounted = true;
-    this._isMounted && this.getData(this.props.img);
   }
 
   calcCoords(num) {
@@ -43,15 +46,18 @@ export default class WaldoImage extends React.Component {
     data
       .then(
         (res) => {
-          this._isMounted &&
-            this.setState({
-              link: res.links[num] ? res.links[num] : res.links[0],
-              coords: res.links[num] ? this.calcCoords(num) : { x: 0, y: 0 },
-            });
+          this.setState({
+            link: res.links[num] ? res.links[num] : res.links[0],
+            coords: res.links[num] ? this.calcCoords(num) : { x: 0, y: 0 },
+          });
         },
-        (e) => {}
+        (e) => {
+          console.log(e);
+        }
       )
-      .catch((e) => {});
+      .catch((e) => {
+        console.log(e);
+      });
   }
 
   render() {
